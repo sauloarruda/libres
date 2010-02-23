@@ -9,8 +9,16 @@ describe Author do
     }
   end
 
-  it "should create a new instance given valid attributes" do
-    Author.create!(@valid_attributes)
+  context "An Author (in general)" do
+    it "should create a new instance given valid attributes" do
+      Author.create!(@valid_attributes)
+    end
+    
+    it "should capitalize author name" do
+      Author.create!(:name => "ROBERT C. MARTIN").name.should == "Robert C. Martin"
+      Author.create!(:name => "ron jeffries").name.should == "Ron Jeffries"
+      Author.create!(:name => "mIkE cOhN").name.should == "Mike Cohn"
+    end
   end
   
   it "should define a lookup method" do
