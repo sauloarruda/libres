@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe Book do
   
-  fixtures :authors, :tags, :books, :books_authors
+  fixtures :authors, :tags, :books, :books_authors, :books_tags
   before(:each) do
     @required_attributes = {
       :title => "Planning Extreme Programming"
@@ -38,7 +38,7 @@ describe Book do
     end
   end
   
-  context "The Book Constructor" do
+  context "The Book attributes" do
     it "should receive an authors array" do
       @required_attributes[:authors] = [ authors(:kent_beck) ]
       book = Book.new @required_attributes
@@ -59,7 +59,6 @@ describe Book do
       book = books(:planning_xp)
       book.update_attributes({ :title => "Planning Extreme Programming - Embrace Change", 
         :authors => "Kent Beck, Martin Fowler" })
-      book.save!
       book.authors.should have(2).records
       book.title.should == "Planning Extreme Programming - Embrace Change"
       
@@ -81,6 +80,15 @@ describe Book do
       book.tags.should have(2).records
       book.tags[1].name.should == "BDD"
       book.save!
+    end
+    
+    it "should avoid tag duplication" do
+      book = books(:planning_xp)
+      book.update_attributes({ :title => "Planning Extreme Programming - Embrace Change", 
+        :tags => "agile, bdd" })
+      book.tags.should have(2).records
+      
+      Tag.find_by_name("agile").should == Tag.find_by_name("Agile") # case sensitive search duplication
     end
   end
 
