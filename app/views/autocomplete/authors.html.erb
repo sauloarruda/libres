@@ -1,0 +1,3 @@
+var authors = Array(<%= @authors.size %>)
+<% @authors.each_with_index do |author, i| %>authors[<%= i %>] = "<%= author %>"
+<% end %>
