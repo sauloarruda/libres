@@ -57,10 +57,15 @@ describe Book do
     
     it "should avoid author duplications when update" do
       book = books(:planning_xp)
-      book.update_attributes({ :title => "Planning Extreme Programming - Embrace Change", :authors => "Kent Beck, Martin Fowler" })
+      book.update_attributes({ :title => "Planning Extreme Programming - Embrace Change", 
+        :authors => "Kent Beck, Martin Fowler" })
       book.save!
       book.authors.should have(2).records
       book.title.should == "Planning Extreme Programming - Embrace Change"
+      
+      book.attributes = { :title => "Planning Extreme Programming", 
+        :authors => "Kent Beck, Martin Fowler" } # annother way
+      book.authors.should have(2).records
     end
 
     it "should receive a tags array" do
