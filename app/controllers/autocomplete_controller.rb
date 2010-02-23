@@ -1,6 +1,6 @@
 class AutocompleteController < ApplicationController
-  layout nil
 
+  layout nil
   before_filter :set_content_type
   
   def set_content_type
@@ -10,5 +10,10 @@ class AutocompleteController < ApplicationController
   def authors
     @authors = Author.for_lookup
   end
+  
+  def tags
+    @tags = Tag.for_lookup
+  end
+    
   
 end

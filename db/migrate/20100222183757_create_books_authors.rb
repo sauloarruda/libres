@@ -5,8 +5,6 @@ class CreateBooksAuthors < ActiveRecord::Migration
       t.references :author, :null => false
       t.timestamps
     end
-    
-    
   end
 
   def self.down

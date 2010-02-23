@@ -1,5 +1,5 @@
 <style type="text/css" media="screen">
-	#book_title, #book_authors {
+	#book_title, #book_authors, #book_tags {
 		width: 400px;
 	}
 </style>
@@ -11,6 +11,9 @@
 </p>
 <p>
 	<%= render :partial => "authors", :locals => { :f => f } %>
+</p>
+<p>
+	<%= render :partial => "tags", :locals => { :f => f } %>
 </p>
 <p>
 	<%= f.submit "Create" %> or <%= link_to 'Cancel', books_path %>
