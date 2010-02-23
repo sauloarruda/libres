@@ -18,6 +18,7 @@ describe Author do
       Author.create!(:name => "ROBERT C. MARTIN").name.should == "Robert C. Martin"
       Author.create!(:name => "ron jeffries").name.should == "Ron Jeffries"
       Author.create!(:name => "mIkE cOhN").name.should == "Mike Cohn"
+      Author.new(:name => nil).name.should be_nil
     end
   end
   

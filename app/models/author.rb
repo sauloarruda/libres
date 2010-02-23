@@ -5,7 +5,7 @@ class Author < ActiveRecord::Base
   end
   
   def name=(name)
-    write_attribute(:name, name.downcase.titleize)
+    write_attribute(:name, name.downcase.titleize) unless name.nil?
   end
 
 end
