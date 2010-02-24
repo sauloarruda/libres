@@ -1,5 +1,4 @@
-<script src="/autocomplete/tags" type="text/javascript"></script>
 <%= f.label :tags %>
 <%= f.text_field :tags %>
 <div class="autocomplete" id="tags_lookup_auto_complete"></div>
-<%= javascript_tag("new Autocompleter.Local('book_tags', 'tags_lookup_auto_complete', tags, { tokens: ',' });") %>
+<%= javascript_tag("new Autocompleter.Local('book_tags', 'tags_lookup_auto_complete', " + tags_for_lookup + ", { tokens: ',' });") %>

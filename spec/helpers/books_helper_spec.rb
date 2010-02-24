@@ -1,11 +1,15 @@
 require 'spec_helper'
+include BooksHelper
 
 describe BooksHelper do
+  fixtures :authors, :tags
 
-  #Delete this example and add some real ones or delete this file
-  it "should be included in the object returned by #helper" do
-    included_modules = (class << helper; self; end).send :included_modules
-    included_modules.should include(BooksHelper)
+  it "should define authors_for_lookup method" do
+    authors_for_lookup.should == "[\"Kent Beck\",\"Martin Fowler\"]"
+  end
+
+  it "should define tags_for_lookup method" do
+    tags_for_lookup.should == "[\"Agile\",\"BDD\",\"Scrum\"]"
   end
 
 end

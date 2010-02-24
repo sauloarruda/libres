@@ -9,7 +9,7 @@ describe Book do
     }
   end
 
-  context "A Book (in general)" do
+  context "in general" do
     it "should be valid with required attributes" do
       book = Book.new
       book.should_not be_valid
@@ -38,7 +38,7 @@ describe Book do
     end
   end
   
-  context "The Book attributes" do
+  context "attributes" do
     it "should receive an authors array" do
       @required_attributes[:authors] = [ authors(:kent_beck) ]
       book = Book.new @required_attributes

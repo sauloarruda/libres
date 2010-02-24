@@ -1,7 +1,8 @@
 class Author < ActiveRecord::Base
 
   def Author.for_lookup
-    Author.find(:all, { :select => :name, :order => :name }).collect { |author| author.name }
+    authors = Author.find(:all, { :select => :name, :order => :name }) # create local variable for better performance
+    authors.collect { |author| author.name }
   end
   
   def name=(name)
