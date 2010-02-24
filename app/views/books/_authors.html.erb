@@ -1,4 +1,4 @@
-<%= f.label :authors %>
-<%= f.text_field :authors %>
+<%= f.label :authors_s %>
+<%= f.text_field :authors_s %>
 <div class="autocomplete" id="author_lookup_auto_complete"></div>
-<%= javascript_tag("new Autocompleter.Local('book_authors', 'author_lookup_auto_complete', " + authors_for_lookup  + ", { tokens: ',' });") %>
+<%= javascript_tag("new Autocompleter.Local('book_authors_s', 'author_lookup_auto_complete', " + authors_for_lookup  + ", { tokens: ',' });") %>

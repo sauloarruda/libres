@@ -1,32 +1,23 @@
 class Book < ActiveRecord::Base
   
   validates_presence_of :title
-  has_and_belongs_to_many :authors, :join_table => "books_authors"
-  has_and_belongs_to_many :tags
+  has_and_belongs_to_many :authors, :join_table => "books_authors", :order => "authors.name"
+  has_and_belongs_to_many :tags, :order => "tags.name"
+  attr_accessor :authors_s, :tags_s
+  before_save :process_attributes
   
-  def attributes=(attributes)
-    super(attributes.except(:authors, :tags))
-    process_attributes(attributes)
+  # lookup authors_s and tags_s
+  def after_find
+    self.authors_s = self.authors.collect { |author| author.name }.join(", ")
+    self.tags_s = self.tags.collect { |tag| tag.name }.join(", ")
   end
-
-  private 
   
+  private 
+
     # process authors and tag attributes for allow use of strings and arrays
-    def process_attributes(attributes)
-      convert_attribute(attributes, :authors, "Author")
-      convert_attribute(attributes, :tags, "Tag")
-    end
-    
-    # convert attribute value and call ActiveRecord::Base#update_attribute method
-    def convert_attribute(attributes, attribute_name, model_class)
-      unless attributes[attribute_name].nil?
-        if attributes[attribute_name].instance_of?(String)
-          value = array_to_string(attributes[attribute_name], model_class)
-        else
-          value = attributes[attribute_name]
-        end
-        update_attribute(attribute_name, value)
-      end
+    def process_attributes
+      self.authors = array_to_string(self.authors_s, "Author") unless self.authors_s.nil?
+      self.tags = array_to_string(self.tags_s, "Tag") unless self.tags_s.nil?
     end
     
     # convert string elements split by ',' to objects (create if needed)
