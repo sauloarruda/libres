@@ -23,8 +23,9 @@ class Book < ActiveRecord::Base
     # convert string elements split by ',' to objects (create if needed)
     def array_to_string(string_array, model_name)
       model_array = []
+      model_object = Object.const_get(model_name)
       string_array.split(",").each do |name|
-        eval("model_array << #{model_name}.find_or_create_by_name(name.strip)")
+        model_array << model_object.find_or_create_by_name(name.strip)
       end
       model_array
     end
