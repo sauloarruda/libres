@@ -1,0 +1,6 @@
+h1. Libres
+
+This is the "Java":java.sun.com version of proof-of-concept. 
+
+To start working clone the repository with command:
+git clone --branch libres-java git@github.com:sauloarruda/libres.git libres-java
