@@ -1,0 +1,23 @@
+h1. Libres
+
+Libre é um sistema para gerenciamento de livros idealizado para fazer uma prova de conceito do uso de Behavior Driven Development usando Java, Rails, PHP e .NET. Cada plataforma terá um fork nesse repositório com o código-fonte produzido.
+
+h2. Projetos
+
+* *master*: Documentação do projeto
+* *libres-rails*: Implementação em Rails 
+* *libres-java*: Implementação em Java 
+* *libres-php*: Implementação em PHP 
+* *libres-dotnet*: Implementação em .NET 
+
+h1. Libres
+
+Libres is a book management application idealized to make a proof-of-concept of Behavior Driven Development using Rails, Java, PHP and .NET. Each plataform will have a fork on this repository witch contains the producted source-code.
+
+h2. Forks
+
+* *master*: Documentation of project
+* *libres-rails*: Rails implementation
+* *libres-java*: Java implementation
+* *libres-php*: PHP implementation
+* *libres-dotnet*: .NET implementation
