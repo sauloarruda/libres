@@ -2,7 +2,7 @@
 App::import('Model', 'Book');
 
 class BookTestCase extends CakeTestCase {
-	var $fixtures = array('app.author', 'app.book');
+	var $fixtures = array('app.author', 'app.book', 'app.books_author');
 
 	function startTest() {
 		$this->Book =& ClassRegistry::init('Book');
