@@ -6,8 +6,7 @@ class Author extends AppModel {
         var $validate = array(
             'name' => array(
                 'rule' => array('custom', '/^[a-z ]+$/i'),
-                'required' => true,
-                'message' => 'Name cannot be blank'
+                'required' => true
             )
         );
         

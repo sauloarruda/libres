@@ -8,9 +8,11 @@ class BooksControllerTest extends CakeTestCase {
             $string = "";
 
             foreach($pattern as $k => $p) $string .= $k."=\"".$p."\" ";
+
+            $string = sprintf("input %s", $string);
+            
             return $this->assertTrue(
-                strpos($subject,
-                sprintf("input %s", $string)) !== false, $message);
+                strpos($subject, $string) !== false, $message);
         }
     }
 
